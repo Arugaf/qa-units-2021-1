@@ -8,9 +8,16 @@ import {getDate} from "../utils/getDate";
 configure({adapter: new Adapter()});
 
 jest.mock('../utils/getDate');
-getDate.mockReturnValue('14 марта, чт, 2019 год');
 
 describe('Order.js', () => {
+    beforeAll(() => {
+        getDate.mockReturnValue('14 марта, чт, 2019 год');
+    });
+
+    afterAll(() => {
+        getDate.mockClear();
+    });
+
     it('render with one item in order', () => {
         const order = shallow(<Order
             order={fakeOrders[0]}
@@ -25,7 +32,7 @@ describe('Order.js', () => {
             order={null}
         />);
 
-        expect(order).toMatchSnapshot();
+        expect(order).toEqual({});
     });
 
     it('render with null shop in order', () => {
@@ -38,7 +45,7 @@ describe('Order.js', () => {
             order={orderProto}
         />);
 
-        expect(order).toMatchSnapshot();
+        expect(order).toEqual({});
     });
 
     it('render with no items in order', () => {

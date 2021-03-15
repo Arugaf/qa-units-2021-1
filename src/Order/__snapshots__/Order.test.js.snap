@@ -24,10 +24,6 @@ exports[`Order.js render with no items in order 1`] = `
 </div>
 `;
 
-exports[`Order.js render with null order 1`] = `""`;
-
-exports[`Order.js render with null shop in order 1`] = `""`;
-
 exports[`Order.js render with one item in order 1`] = `
 <div
   className="Order"
